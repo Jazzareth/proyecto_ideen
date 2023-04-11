@@ -4,7 +4,7 @@
 
       <v-col cols="8">
 
-        <h1 text-center class="display-2 font-weight-bold mb-3 primary--text"> Materias inscritas </h1>
+        <h1 class="display-2 font-weight-bold mb-3 primary--text text-center "> Materias inscritas </h1>
 
         <v-container v-for="(course,index) in courses" :key="index">
           <v-card>
@@ -37,7 +37,7 @@
                   </v-card-title>
                   <v-card-text>
                     <p>Profesor:{{course.teacher}}</p>
-                    <p>Salon:{{course.c_room}}</p>
+                    <p>Salón:{{course.c_room}}</p>
                     <p>Fecha:{{course.c_dates}}</p>
                     <p>Horario:{{course.c_time}}</p>
                   </v-card-text>

@@ -52,8 +52,8 @@
                         v-model="password"
                         :rules="[rules.required, rules.counter, rules.segura]"
                         clearable
-                        label="Password"
-                        placeholder="Enter your password"
+                        label="Contraseña"
+                        placeholder="Ingresa tu contraseña"
                     ></v-text-field>
 
                     <v-text-field
@@ -62,7 +62,7 @@
                         clearable
                         persistent-counter
                         label="Confirmar Password"
-                        placeholder="Enter your password"
+                        placeholder="Ingresa tu contraseña"
                     ></v-text-field>
             
             

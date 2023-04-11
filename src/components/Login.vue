@@ -20,7 +20,8 @@
             :rules="[rules.required, rules.email]"
             class="mb-2"
             clearable
-            label="Email"
+            label="Correo"
+            placeholder="Ingresa tu correo institucional"
           ></v-text-field>
   
           <v-text-field
@@ -29,8 +30,8 @@
             :rules="[rules.required, rules.counter]"
             clearable
             persistent-counter
-            label="Password"
-            placeholder="Enter your password"
+            label="Contraseña"
+            placeholder="Ingresa tu contraseña"
           ></v-text-field>
   
           <br>
