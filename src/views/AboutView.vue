@@ -66,17 +66,28 @@
 
 
 <script>
-import {courses} from "/src/components/data.js"
+
+import firebase from 'firebase';
 
   export default {
     name: "coursList",
+    async mounted(){
+      await this.getCourses();
+    },
     data(){
       return{
-        courses:courses,
+        courses:[],
         dialog:{},
       }
     },
    methods:{
+    async getCourses(){
+      firebase.firestore().collection('courses').get().then((querySnapshot)=>{
+        querySnapshot.forEach((doc)=>{
+          this.courses.push(doc.data());
+        });
+      });
+    },
 
     }
   }

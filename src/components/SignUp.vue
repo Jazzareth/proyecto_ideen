@@ -57,8 +57,8 @@
                     ></v-text-field>
 
                     <v-text-field
-                        v-model="con_pass"
-                        :rules="[rules.required,rules.counter]"
+                        v-model="con_password"
+                        :rules="[ value => value === password || 'La contraseña no es la misma',value => !!value || 'Required.']"
                         clearable
                         persistent-counter
                         label="Confirmar Password"
@@ -105,7 +105,7 @@ export default {
     email_inst: null,
     email: null,
     password: null,
-    con_pass: null,
+    con_password: null,
     terms: false,
     rules: {
           required: value => !!value || 'Required.',
@@ -115,7 +115,6 @@ export default {
             const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             return pattern.test(value) || 'Invalid e-mail.'
           },
-          igual: value => value === password || 'La contraseña no es la misma',
         },
   }),
 
@@ -124,7 +123,7 @@ export default {
         if (!this.form) return
 
         if(this.form){
-          await firebase.auth().createUserWithEmailAndPassword(this.email_inst,this.password)
+          await firebase.auth().createUserWithEmailAndPassword(this.email_inst,this.con_password)
           const imagen = await firebase.storage().ref('user.juan.jpeg').getDownloadURL().catch((error) => {alert(error.message)})
 
           await firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).set({
